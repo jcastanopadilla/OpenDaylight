@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de configuración de OpenDaylight</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+      background-color: #D9C8AE;
+      color: #000;
+    }
+    h1, h2, h3 {
+      color: #000;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 5px solid #7FFF00;
+      padding-bottom: 5px;
+    }
+    p {
+      text-align: justify;
+    }
+    ul {
+      margin-left: 30px;
+    }
+    .autor {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>    
+</head>
+<body>
+     <h1>Guía paso a paso de configuración de OpenDaylight (ODL)</h1>
+  <p class="autor">
+    <strong>Asignatura:</strong> Configuración de redes<br>
+    <strong>Tema:</strong> OpenDaylight (ODL)<br>
+    <strong>Autor: Jose Miguel Castaño Padilla</strong>
+  </p>
+
+  <h2>Primera parte: Fundamentos teóricos</h2>
+
+  <h3>¿Qué es OpenDaylight (ODL)?</h3>
+  <p>
+    El proyecto OpenDaylight es una plataforma de código abierto para redes definidas por software (SDN) que utiliza protocolos abiertos para proporcionar control programático centralizado y monitoreo de dispositivos de red.
+  </p>
+
+  <h3>Arquitectura de OpenDaylight (ODL)</h3>
+  <img src="imagen/im_1.png" alt="Logo de OpenDaylight" width="800">
+  <p>
+    La arquitectura de OpenDaylight (ODL) está basada en una estructura modular y orientada a servicios. Está diseñada para ofrecer flexibilidad, escalabilidad y compatibilidad con distintos controladores y dispositivos de red.
+  </p>
+
+  <ol>
+    <li><strong>Capa de infraestructura o Southbound (Sur):</strong>
+      <ul>
+        <li>Se comunica directamente con los dispositivos de red físicos o virtuales, como switches y routers.</li>
+      </ul>
+    </li>
+
+    <li><strong>Capa del Núcleo o Control:</strong>
+      <ul>
+        <li>Es el corazón de OpenDaylight.</li>
+        <li>Recibe la información de los dispositivos y toma decisiones de control (rutas, políticas, etc.).</li>
+        <li>Basada en el framework OSGi, que permite instalar o actualizar componentes de forma modular.</li>
+      </ul>
+      <p>Componentes clave del núcleo:</p>
+      <ul>
+        <li><strong>MD-SAL:</strong> Comunicación entre módulos sin dependencia directa.</li>
+        <li><strong>Data Store:</strong> Base de datos interna que guarda el estado de la red.</li>
+        <li><strong>YANG Models:</strong> Define datos y servicios de red de manera estandarizada.</li>
+      </ul>
+    </li>
+
+    <li><strong>Capa de Aplicación o Northbound (Norte):</strong>
+      <ul>
+        <li>Es donde interactúan las aplicaciones SDN y herramientas externas.</li>
+        <li>Usa APIs Northbound (REST, RESTCONF, JSON, XML) para consultar o modificar el estado de la red.</li>
+      </ul>
+    </li>
+
+    <li><strong>Capa de Servicios (Services Layer):</strong>
+      <ul>
+        <li>Actúa como intermediario entre las aplicaciones y el núcleo.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>Segunda parte: Guía de aplicación</h2>
+
+  <ol>
+    <li>Iniciamos VirtualBox y abrimos Mininet.</li>
+    <img src="imagen/im_2.png" alt="Logo de OpenDaylight" width="800">
+    <li>Iniciamos sesión con:
+      <ul>
+        <li><strong>login:</strong> mininet</li>
+        <li><strong>password:</strong> mininet</li>
+        <li>Y mostrara lo siguiente una vez estemos en mininet</li>
+      </ul>
+      <img src="imagen/im_3.png" alt="logo de OpenDaylight" width="800">
+    </li>
+    <li>Ejecutamos el siguiente comando:
+      <pre><code>ifconfig</code></pre>
+      <p>Esto mostrará nuestra dirección IP.</p>
+    </li>
+    <img src="imagen/im_4.png" alt="logo de OpenDaylight" width="800">
+    <li>Abrimos PuTTY y agregamos la IP mostrada, por ejemplo:
+      <pre><code>192.168.101.10</code></pre>
+      <img src="imagen/im_5.png" alt="logo de OpenDaylight" width="800">
+      <p>En la sección <strong>X11</strong> de PuTTY, agregamos <code>localhost.0</code> y luego abrimos la conexión.</p>
+      <img src="imagen/im_6.png" alt="logo de OpenDaylight" width="800">
+    </li>
+    <li>Iniciamos sesión en PuTTY nuevamente con:
+      <ul>
+        <li><strong>login:</strong> mininet</li>
+        <li><strong>password:</strong> mininet</li>
+      </ul>
+      <img src="imagen/im_7.png" alt="logo de OpenDaylight" width="800">
+      <img src="imagen/im_8.png" alt="logo de OpenDaylight" width="800">
+    </li>
+  </ol>
+
+  <h3>Instalación de OpenDaylight (ODL)</h3>
+
+  <p>Ahora, dentro de PuTTY, ejecutamos los siguientes comandos:</p>
+
+  <h4>Paso 1: Actualizar el sistema</h4>
+  <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+  <img src="imagen/im_9.png" alt="logo de OpenDaylight" width="800">
+  <h4>Paso 2: Instalar JDK 17 (requerimiento de ODL)</h4>
+  <pre><code>
+sudo apt update
+sudo apt install wget -y
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:openjdk-r/ppa -y
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+  </code></pre>
+  <img src="imagen/im_10.png" alt="logo de OpenDaylight" width="800">
+  <p>Verificar la versión instalada:</p>
+  <pre><code>java -version</code></pre>
+  <img src="imagen/im_11.png" alt="logo de OpenDaylight" width="800">
+  <h4>Paso 3: Descargar OpenDaylight (ODL)</h4>
+  <pre><code>wget https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.19.2/karaf-0.19.2.zip</code></pre>
+  <img src="imagen/im_12.png" alt="logo de OpenDaylight" width="800">
+  <h4>Paso 4: Descomprimir e iniciar OpenDaylight</h4>
+  <pre><code>
+unzip karaf-0.19.2.zip
+cd karaf-0.19.2
+./bin/karaf
+  </code></pre>
+
+  <p>Una vez ejecutamos todos estos comandos tendríamos nuestra instalación de 
+OpenDaylight (ODL). </p>
+<img src="imagen/im_13.png" alt="logo de OpenDaylight" width="800">
+  <p>Para cerrar OpenDaylight:</p>
+  <pre><code>logout</code></pre>
+  <img src="imagen/im_14.png" alt="logo de OpenDaylight" width="800">
+  <p>Hola respecto al final de OpenDaylight tuve un problema que se me ha bloqueó la máquina virtual y he intentado varias veces arreglarla y no he podido aquí le muestro el final:</p>
+  <img src="imagen/im_15.png" alt="logo de OpenDaylight" width="800">
+  <h2>Conclusión</h2>
+  <p>
+    En este trabajo se pudo evidenciar que la configuración de OpenDaylight (ODL) es fundamental porque garantiza un control eficiente, seguro y automatizado de toda la infraestructura de red, permitiendo aprovechar al máximo la ventaja de la arquitectura SDN.
+  </p>
+  <p>
+    En esta guía se realizo el paso a paso de la configuración de OpenDaylight, donde primero se debe realizar la actualización del sistema para nuestra configuración de OpenDaylight, seguidamente nos pide obligatoriamente instalar jdk, posteriormente descargamos OpenDaylight y por último una vez descargado descomprimimos nuestro archivo e iniciamos OpenDaylight gracias a todo este proceso se realizó correctamente nuestra instalación. 
+  </p>
+  En conclusión, esta guía no solo consolida los fundamentos teóricos, si no también ofrece una base practica para futuras implementación y comparaciones con otros controladores similares.
+</body>
+</html>
