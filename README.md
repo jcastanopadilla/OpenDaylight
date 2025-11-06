@@ -32,7 +32,8 @@
    - password: mininet
    - y mostrara lo siguiente una vez estemos en mininet
 # <img width="349" height="302" alt="im_3" src="https://github.com/user-attachments/assets/9efa9b52-205d-41d7-8354-5525b80bc0e0" />
-# 3. escribimos el comando siguiente: 
+3. escribimos el comando siguiente:
+   - ifconfig 
 
 
    
