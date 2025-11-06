@@ -83,11 +83,13 @@ Hola respecto al final de OpenDaylight tuve un problema que se me ha bloqueó la
 # Conclusión  
 En este trabajo se pudo evidenciar que la configuración de OpenDaylight (ODL) es fundamental porque garantiza un control eficiente, seguro y automatizado de toda 
 la infraestructura de red, permitiendo aprovechar al máximo la ventaja de la arquitectura SDN. 
+#
 En esta guía se realizo el paso a paso de la configuración de OpenDaylight, donde 
 primero se debe realizar la actualización del sistema para nuestra configuración de 
 OpenDaylight, seguidamente nos pide obligatoriamente instalar jdk, posteriormente 
 descargamos OpenDaylight y por último una vez descargado descomprimimos nuestro archivo e iniciamos OpenDaylight gracias a todo este proceso se realizó 
 correctamente nuestra instalación.  
+#
 En conclusión, esta guía no solo consolida los fundamentos teóricos, si no también 
 ofrece una base practica para futuras implementación y comparaciones con otros 
 controladores similares.
