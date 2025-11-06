@@ -28,6 +28,12 @@
 1. Iniciamos VirtualBox y abrimos mininet
 # <img width="535" height="291" alt="im_2" src="https://github.com/user-attachments/assets/4e602e1d-c172-4051-8e66-6b92306136d0" />
 2. Iniciamos sesión con:
+   - login: mininet
+   - password: mininet
+   - y mostrara lo siguiente una vez estemos en mininet
+# <img width="349" height="302" alt="im_3" src="https://github.com/user-attachments/assets/9efa9b52-205d-41d7-8354-5525b80bc0e0" />
+
+   
    
 
 
