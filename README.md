@@ -8,4 +8,4 @@
 # El proyecto OpenDaylight es una plataforma de código abierto para redes definidas por software (SDN) que utiliza protocolos abiertos para proporcionar control programático centralizado y monitoreo de dispositivos de red.
 # La arquitectura OpenDaylight (ODL) es: 
 #<img width="575" height="376" alt="im_1" src="https://github.com/user-attachments/assets/51530c7a-f238-45b9-ac8c-f1c99df2061e" />
-
+# La arquitectura de OpenDaylight (ODL) está basada en una estructura modular y orientada a servicios. Diseñada para ofrecer flexibilidad, escolaridad y compatibilidad con distintos controladores y dispositivos de red.
