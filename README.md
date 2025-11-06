@@ -14,4 +14,17 @@
 # 2. Capa del Núcleo o control.
 - Es el corazón de OpenDaylight.
 - Se encarga de recibir la información recibida de los dispositivos y tomar decisiones de control (por ejemplo, rutas, políticas, etc.).
-- Está basada en el framework OSGi (Open Services Gateway initiative), que permite que los componentes se instalen o actualicen de forma modular (sin reiniciar el controlador).    
+- Está basada en el framework OSGi (Open Services Gateway initiative), que permite que los componentes se instalen o actualicen de forma modular (sin reiniciar el controlador).
+# Componentes clave del núcleo: 
+- MD-SAL (Model-Driven Service Abstraction Layer): permite la comunicación entre los módulos sin depender directamente entre sí.
+- Data Store: base de datos interna que guarda el estado de la red.
+- YANG Models: define los datos y servicios de la red de manera estandarizada.
+# 3. Capa de Aplicación o Northbound (Norte). 
+- Es la capa donde interactúan las aplicaciones SDN y las herramientas externas. 
+- Usa APIs Northbound (REST, RESTCONF, JSON, XML) para que las aplicaciones puedan consultar o modificar el estado de la red.
+# 4. Capa de servicios (Services Layer). 
+- Actúa como intermediario entre las aplicaciones y el núcleo.
+
+ 
+   
+   
