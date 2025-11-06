@@ -24,6 +24,11 @@
 - Usa APIs Northbound (REST, RESTCONF, JSON, XML) para que las aplicaciones puedan consultar o modificar el estado de la red.
 # 4. Capa de servicios (Services Layer). 
 - Actúa como intermediario entre las aplicaciones y el núcleo.
+# Segunda parte: guía de aplicación 
+1. Iniciamos VirtualBox y abrimos mininet
+# <img width="535" height="291" alt="im_2" src="https://github.com/user-attachments/assets/4e602e1d-c172-4051-8e66-6b92306136d0" />
+
+
 
  
    
