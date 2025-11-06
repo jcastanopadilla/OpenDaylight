@@ -12,6 +12,6 @@
 # 1. Capa de infraestructura o southbound (Sur). 
 # - Es la capa que se comunica directamente con los dispositivos de red físicos o virtuales, como switches y routers.
 # 2. Capa del Núcleo o control.
-# - Es el corazón de OpenDaylight.
-# - Se encarga de recibir la información recibida de los dispositivos y tomar decisiones de control (por ejemplo, rutas, políticas, etc.).
-# - Está basada en el framework OSGi (Open Services Gateway initiative), que permite que los componentes se instalen o actualicen de forma modular (sin reiniciar el controlador).    
+- Es el corazón de OpenDaylight.
+- Se encarga de recibir la información recibida de los dispositivos y tomar decisiones de control (por ejemplo, rutas, políticas, etc.).
+- Está basada en el framework OSGi (Open Services Gateway initiative), que permite que los componentes se instalen o actualicen de forma modular (sin reiniciar el controlador).    
